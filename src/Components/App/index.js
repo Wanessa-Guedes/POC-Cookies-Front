@@ -1,6 +1,5 @@
 import { useState } from "react";
 import axios from "axios";
-
 export default function App() {
 
     const [userLoginInfo, setUserLoginInfo] = useState({ email: "", password: ""});
@@ -11,7 +10,8 @@ export default function App() {
                 const data = { 
                 email: userLoginInfo.email, 
                 password: userLoginInfo.password};
-                const promise = await axios.post("http://localhost:5000/login", {});
+                //const promise = await axios.post("http://localhost:5000/login", data, {headers:{ Cookie:"cookie2=valor2"}}, {withCredentials: true});
+                const promise = await axios.post("http://localhost:5000/login", data, {withCredentials: true});
                 console.log(promise)
                     localStorage.setItem("token", `${promise.data}`);
         } catch (e) {
